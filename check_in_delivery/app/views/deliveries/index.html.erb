@@ -1,1 +1,12 @@
 <h1>This is the Model's index page.</h1>
+list location of deliveries here 
+
+ <ul>
+   <li>
+   <% @delivery.each do |t|%>
+      <a href="/deliveries/<%= t.id %>">
+         <%= t.location %>
+      </a>
+   </li>
+      <% end %>
+   </ul>

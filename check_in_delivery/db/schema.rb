@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 2021_04_15_165557) do
     t.integer "qty_trims"
     t.integer "qty_fixtures"
     t.integer "user_id"
+    t.boolean "checked_in"
+    t.boolean "expected_product"
+    t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

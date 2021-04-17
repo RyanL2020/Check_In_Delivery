@@ -1,1 +1,23 @@
 <h1>Insert the form to edit an instance of your model here.</h1>
+add delivery form here, 
+
+<form action="/deliveries/<%= @delivery.id %>" method="POST"> 
+<input type="hidden" id="hidden" name="_method" value="PATCH">
+<label>Quantity of Lamps</label>
+  <br/>
+ <input type="number" name="qty_lamps" value="<%= @delivery.qty_lamps %>">
+ <br/>
+ <label>Quantity of housings</label>
+ <br/>
+ <input type="text" name="qty_housings" value="<%= @delivery.qty_housings%>">
+ <br/>
+ <label>Quantity of trims</label>
+ <br/>
+ <input type="number" name="qty_trims" value="<%= @delivery.qty_trims%>">
+ <br/>
+ <label>Quantity of Fixtures</label>
+ <br/>
+ <input type="number" name="qty_fixtures" value="<%= @delivery.qty_fixtures%>">
+ <br/>
+ <input type="submit" value="Done">
+</form>

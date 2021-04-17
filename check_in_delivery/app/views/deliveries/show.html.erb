@@ -1,1 +1,22 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h4>show page </h4>
+    <h1>This is the <%= @delivery.location %> delivery</h1>
+ <form action="/deliveries/<%= @delivery.id %>" method="POST"> 
+    <h3>Quantity of Lamps</h3>
+    <%= @delivery.qty_lamps %>
+    <br/>
+    <h3>Quantity of housings</h3>
+    <%= @delivery.qty_housings %>
+    <br/>
+    <h3>Quantity of trims</h3>
+    <%= @delivery.qty_trims %>
+    <br/>
+    <h3>Quantity of Fixtures</h3>
+    <%= @delivery.qty_fixtures %>
+    <br/>
+
+     <a href= "/deliveries/<%= @delivery.id %>/check_in">
+      Check In at: <%= @delivery.location %> 
+     </a> 
+    <br/>
+    </form>
+   

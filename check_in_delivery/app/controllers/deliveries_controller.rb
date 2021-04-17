@@ -2,36 +2,89 @@ class DeliveriesController < ApplicationController
 
   # GET: /deliveries
   get "/deliveries" do
+    @delivery = Delivery.all
     erb :"/deliveries/index.html"
   end
-
-  # GET: /deliveries/new
-  get "/deliveries/new" do
-    erb :"/deliveries/new.html"
-  end
-
-  # POST: /deliveries
-  post "/deliveries" do
-    redirect "/deliveries"
-  end
-
-  # GET: /deliveries/5
+  
   get "/deliveries/:id" do
+    @delivery = Delivery.find_by_id(params[:id])
     erb :"/deliveries/show.html"
   end
+  
+  get "/deliveries/:id/check_in" do
+    @delivery = Delivery.find_by_id(params[:id])
+     erb :"/deliveries/check_in"
+  end 
 
-  # GET: /deliveries/5/edit
-  get "/deliveries/:id/edit" do
-    erb :"/deliveries/edit.html"
+  
+  
+  
+  # GET: /deliveries/new
+  get "/deliveries/new" do
+    @delivery = Delivery.new(params)
+     if @delivery.save 
+      redirect "/deliveries/#{@delivery.id}/check_in"
+     else
+      #error message 
+      redirect "/deliveries/new.html"
+    end
   end
 
-  # PATCH: /deliveries/5
   patch "/deliveries/:id" do
-    redirect "/deliveries/:id"
+     @delivery = Delivery.find_by_id(params[:id])
+     params.delete("_method")
+     @delivery.update(params)
+     redirect "/complete"
   end
+  
+    
+  get "/complete" do
+    @delivery = Delivery.find_by_id(params[:id])
+    erb :"/deliveries/complete"
+  end 
 
-  # DELETE: /deliveries/5/delete
-  delete "/deliveries/:id/delete" do
-    redirect "/deliveries"
+  post "/deliveries" do
+    delivery = Delivery.new(params)
+    if delivery.save
+    redirect "/deliveries/#{delivery.id}/check_in"
+  else
+    redirect "deliveries/new"
+    
   end
 end
+
+
+# POST: /deliveries
+
+
+
+# GET: /deliveries/5/edit
+get "/deliveries/:id/edit" do
+  @delivery = Delivery.find_by_id(params[:id])
+  
+  erb :"/deliveries/edit.html"
+end
+
+
+
+# DELETE: /deliveries/5/delete
+delete "/deliveries/:id/delete" do
+  redirect "/deliveries"
+end
+end
+
+#patch "/deliveries/:id" do
+#  @delivery = Delivery.find_by_id(params[:id])
+#  params.delete("_method")
+#  @delivery.update(params)
+#  redirect "/deliveries/:id"
+#end
+#patch "/deliveries/:id" do
+#  delivery = Delivery.find_by_id(params[:id])
+#   delivery.update(params)
+#   if delivery.update
+#     redirect "delivery/#{delivery.id}/edit"
+#   else
+#     redirect "delivery/new"
+#   end
+# end

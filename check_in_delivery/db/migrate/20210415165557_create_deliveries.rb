@@ -7,7 +7,9 @@ class CreateDeliveries < ActiveRecord::Migration[5.2]
       t.integer :qty_trims
       t.integer :qty_fixtures
       t.integer :user_id
-
+      t.boolean :checked_in
+      t.boolean :expected_product
+      t.string  :notes
       t.timestamps null: false
     end
   end

@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   # GET: /users
   get "/users" do
+    @users = User.all
+    binding.pry
     erb :"/users/index.html"
   end
 
@@ -11,8 +13,8 @@ class UsersController < ApplicationController
   end
 
   # POST: /users
-  post "/users" do
-    redirect "/users"
+  post "/users/new" do
+    redirect "/deliveries"
   end
 
   # GET: /users/5

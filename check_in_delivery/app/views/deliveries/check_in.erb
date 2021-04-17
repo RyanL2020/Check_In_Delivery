@@ -1,21 +1,24 @@
-<h1>Make a new delivery</h1>
+<h1> Check In For <%= @delivery.location%> </h1>
+
 <form action="/deliveries/<%= @delivery.id %>" method="POST"> 
 <input type="hidden" id="hidden" name="_method" value="PATCH">
 <label>Quantity of Lamps</label>
   <br/>
- <input type="number" name="qty_lamps" value="<%= @delivery.qty_lamps %>">
+ <input type="number" name="qty_lamps">
  <br/>
  <label>Quantity of housings</label>
  <br/>
- <input type="text" name="qty_housings" value="<%= @delivery.qty_housings%>">
+ <input type="text" name="qty_housings">
  <br/>
  <label>Quantity of trims</label>
  <br/>
- <input type="number" name="qty_trims" value="<%= @delivery.qty_trims%>">
+ <input type="number" name="qty_trims">
  <br/>
  <label>Quantity of Fixtures</label>
  <br/>
- <input type="number" name="qty_fixtures" value="<%= @delivery.qty_fixtures%>">
+ <input type="number" name="qty_fixtures">
  <br/>
+ <label>Notes</label>
+ <input type="text" name="notes">
  <input type="submit" value="Done">
 </form>
