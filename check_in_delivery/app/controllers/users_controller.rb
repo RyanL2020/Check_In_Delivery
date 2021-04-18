@@ -3,25 +3,35 @@ class UsersController < ApplicationController
   # GET: /users
   get "/users" do
     @users = User.all
-    binding.pry
     erb :"/users/index.html"
   end
 
+  post "/users" do
+    @user = User.new(params)
+    if @user.save
+    redirect "/users/#{@user.id}"
+    else
+      redirect "/users/new"
+   end
+ end
   # GET: /users/new
   get "/users/new" do
-    erb :"/users/new.html" #sign_up form
-  end
+   erb :"users/new.html"
+  end 
+  
 
-  # POST: /users
-  post "/users/new" do
-    redirect "/deliveries"
-  end
 
-  # GET: /users/5
   get "/users/:id" do
+    @user = User.find_by_id(params[:id])
     erb :"/users/show.html"
   end
 
+  
+  
+  
+
+
+ 
   # GET: /users/5/edit
   get "/users/:id/edit" do
     erb :"/users/edit.html"
@@ -36,4 +46,11 @@ class UsersController < ApplicationController
   delete "/users/:id/delete" do
     redirect "/users"
   end
-end
+end 
+#@user = User.new(params)
+#    if @user.save
+#      redirect "/deliveries"
+#    else
+#      redirect "/users/:id" #sign_up form
+#    end
+
