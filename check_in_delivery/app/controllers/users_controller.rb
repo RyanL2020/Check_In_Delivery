@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-  # GET: /users
   get "/users" do
     @users = User.all
     erb :"/users/index.html"
@@ -14,17 +13,17 @@ class UsersController < ApplicationController
       redirect "/users/new"
    end
  end
-  # GET: /users/new
+  
   get "/users/new" do
    erb :"users/new.html"
   end 
   
-
-
   get "/users/:id" do
     @user = User.find_by_id(params[:id])
     erb :"/users/show.html"
   end
+
+
 
   
   
@@ -32,25 +31,19 @@ class UsersController < ApplicationController
 
 
  
-  # GET: /users/5/edit
+  
   get "/users/:id/edit" do
     erb :"/users/edit.html"
   end
 
-  # PATCH: /users/5
+
   patch "/users/:id" do
     redirect "/users/:id"
   end
 
-  # DELETE: /users/5/delete
   delete "/users/:id/delete" do
     redirect "/users"
   end
 end 
-#@user = User.new(params)
-#    if @user.save
-#      redirect "/deliveries"
-#    else
-#      redirect "/users/:id" #sign_up form
-#    end
+
 
