@@ -1,4 +1,4 @@
-<h1> Completed </h1>
+<h2> Check in completed for <%= @delivery.location %></h2>
 
 <label>Quantity of Lamps</label>
   <br/>
@@ -19,3 +19,10 @@
  <label>Notes</label>
  <%= @delivery.notes%>
  
+ <footer class="branding">
+      <h4><a href="/deliveries/<%= @delivery.id %>/edit">Update</a></h4>
+  <form method="Post" action="/deliveries/<%= @delivery.id %>">
+      <input type="hidden" id="hidden" name="_method" value="DELETE">
+      <input type="submit"  value="Delete">
+   </form>     
+</footer>

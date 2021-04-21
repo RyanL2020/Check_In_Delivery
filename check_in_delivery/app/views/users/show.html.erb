@@ -1,5 +1,4 @@
-<h1>This is the show page for an individual instance of your model.</h1>
- <h1>This is the profile </h1>
+<h1> Hello <%= @user.first_name %> this is your profile! </h1>
 
     <h3>First Name</h3>
     <%= @user.first_name %>
@@ -11,3 +10,4 @@
     <%= @user.username %>
     <br/>
     <br/>
+    <h4><a href="/deliveries">Go to Deliveries</a></h4>

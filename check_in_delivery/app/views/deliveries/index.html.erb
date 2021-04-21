@@ -1,15 +1,17 @@
-<h1>This is the Model's index page.</h1>
-list location of deliveries here 
-
-   
+<h1> Please click on a location to check in deliveries </h1>
+ 
+   <% if @user.deliveries.length > 0   %>
  <ul>
    <li>
    <% @deliveries.each do |t|%>
       <a href="/deliveries/<%= t.id %>">
-         <%= t.location %>
-      </a>
+         <li> <%= t.location %> </li>
    </li>
 
       <% end %>
    </ul>
+   <% else %>
+     <a href= "/deliveries/new"> No deliveries at this time  </a>
+   <% end %>
+  
   

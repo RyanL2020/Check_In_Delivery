@@ -1,4 +1,4 @@
-<h1> Check In For <%= @delivery.location%> </h1>
+<h2> Check In For <%= @delivery.location%> </h2>
 
 <form action="/deliveries/<%= @delivery.id %>" method="POST"> 
 <input type="hidden" id="hidden" name="_method" value="PATCH">
@@ -8,7 +8,7 @@
  <br/>
  <label>Quantity of housings</label>
  <br/>
- <input type="text" name="qty_housings">
+ <input type="number" name="qty_housings">
  <br/>
  <label>Quantity of trims</label>
  <br/>

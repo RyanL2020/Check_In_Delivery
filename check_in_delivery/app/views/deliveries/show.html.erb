@@ -1,5 +1,4 @@
-<h4>show page </h4>
-    <h1>This is the <%= @delivery.location %> delivery</h1>
+<h2> This delivery needs to be checked in! This is the: <%= @delivery.location %> delivery. </h2>
  <form action="/deliveries/<%= @delivery.id %>" method="POST"> 
     <h3>Quantity of Lamps</h3>
     <%= @delivery.qty_lamps %>
@@ -19,4 +18,8 @@
      </a> 
     <br/>
     </form>
+    <form method="Post" action="/deliveries/<%= @delivery.id %>">
+      <input type="hidden" id="hidden" name="_method" value="DELETE">
+      <input type="submit"  value="Delete">
+   </form>     
    

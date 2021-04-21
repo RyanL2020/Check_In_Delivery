@@ -1,28 +1,48 @@
 class UsersController < ApplicationController
 
   get "/users" do
-    @users = User.all
-    erb :"/users/index.html"
+    if logged_in?
+      @users = User.all
+      erb :"/users/index.html"
+    else
+      redirect "/login"
+    end
   end
-
+      
+  
   post "/users" do
     @user = User.new(params)
-    if @user.save
-    redirect "/users/#{@user.id}"
+    if @user && @user.save
+      session[:user_id] = @user.id
+      redirect "/users/#{@user.id}"
     else
       redirect "/users/new"
-   end
- end
+    end
+  end
   
   get "/users/new" do
-   erb :"users/new.html"
+    if logged_in?
+      erb :"users/new.html"
+    else
+      redirect "/login"
+    end
   end 
   
   get "/users/:id" do
-    @user = User.find_by_id(params[:id])
-    erb :"/users/show.html"
+    if logged_in?
+      @user = User.find_by_id(params[:id])
+      erb :"/users/show.html"
+    else
+      redirect "/login"
+    end 
   end
 
+  delete "/users/:id/delete" do
+    @user = User.find_by_id(params[:id])
+    @user.destroy
+    redirect "/users"
+  end
+end 
 
 
   
@@ -41,9 +61,5 @@ class UsersController < ApplicationController
     redirect "/users/:id"
   end
 
-  delete "/users/:id/delete" do
-    redirect "/users"
-  end
-end 
 
 

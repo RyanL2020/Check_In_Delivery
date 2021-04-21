@@ -110,7 +110,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord (~> 5.2)
-  bcrypt
+  bcrypt (~> 3.1.13)
   capybara
   faker
   pry

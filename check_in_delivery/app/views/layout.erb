@@ -19,7 +19,10 @@
         <%= yield %>
 
       <footer class="branding">
-        <h4><a href="/users/new">Signup</a></h4>
+          <% if logged_in? %>
+            <h4> Welcome to delivery check in </h4>
+            <h4><a href="/logout">Log Out</a></h4>
+          <% end %> 
         <small>&copy; 2021 <strong>CheckInDelivery</strong></small>
       </footer>
     </div>
