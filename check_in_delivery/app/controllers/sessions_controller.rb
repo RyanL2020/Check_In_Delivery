@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id 
             @deliveries = Delivery.all
             redirect "/deliveries"
-            #erb :"/deliveries/index.html"
         else 
             redirect "/login"
         end 

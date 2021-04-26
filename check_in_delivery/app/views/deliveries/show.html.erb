@@ -1,4 +1,8 @@
-<h2> This delivery needs to be checked in! This is the: <%= @delivery.location %> delivery. </h2>
+<% if @delivery.checked_in != true %>
+<h2> The delivery for <%= @delivery.location %> needs to be checked in! </h2>
+   <% else %>
+      <h2> The delivery for <%= @delivery.location %> is checked in! </h2>
+ <% end %>
  <form action="/deliveries/<%= @delivery.id %>" method="POST"> 
     <h3>Quantity of Lamps</h3>
     <%= @delivery.qty_lamps %>
@@ -13,13 +17,23 @@
     <%= @delivery.qty_fixtures %>
     <br/>
 
+    
+    <% if @delivery.checked_in != true %>
      <a href= "/deliveries/<%= @delivery.id %>/check_in">
-      Check In at: <%= @delivery.location %> 
+      Check In for: <%= @delivery.location %> 
      </a> 
+      <% else %>
+         <a href= "/deliveries/<%= @delivery.id %>/edit">
+         <h3> Update Delivery </h3>
+     </a> 
+
+      <% end %>
     <br/>
     </form>
     <form method="Post" action="/deliveries/<%= @delivery.id %>">
       <input type="hidden" id="hidden" name="_method" value="DELETE">
       <input type="submit"  value="Delete">
    </form>     
+
+
    

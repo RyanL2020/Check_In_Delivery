@@ -1,5 +1,4 @@
 require './config/environment'
-
 class ApplicationController < Sinatra::Base
 
   configure do
@@ -20,8 +19,18 @@ class ApplicationController < Sinatra::Base
   end 
 
   def current_user
+    #going to return @user if set or find the user by id: session :user_id
    @user ||= User.find_by(id: session[:user_id])
   end 
-end 
+
+  
+  #def delivery_user_id
+  
+  #  Delivery.all.map { |delivery| delivery.user_id  }
+  
+  #end 
+  
+  end 
+
 end
 

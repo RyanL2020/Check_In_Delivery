@@ -5,7 +5,7 @@ Delivery.destroy_all
     User.create(first_name: Faker::Name.first_name, 
     last_name: Faker::Name.last_name,
     username: Faker::Name.initials,
-    password_digest: "password")
+    password: "password")
 end 
 
 25.times do 

@@ -16,11 +16,14 @@
  <br/>
  <%= @delivery.qty_fixtures%>
  <br/>
+ <br/>
  <label>Notes</label>
+ <br/>
  <%= @delivery.notes%>
  
  <footer class="branding">
       <h4><a href="/deliveries/<%= @delivery.id %>/edit">Update</a></h4>
+      <h4><a href="/deliveries">Back to your deliveries</a></h4>
   <form method="Post" action="/deliveries/<%= @delivery.id %>">
       <input type="hidden" id="hidden" name="_method" value="DELETE">
       <input type="submit"  value="Delete">

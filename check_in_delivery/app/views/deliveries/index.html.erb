@@ -1,9 +1,9 @@
-<h1> Please click on a location to check in deliveries </h1>
+<h1> Please click on a location to check in </h1>
  
    <% if @user.deliveries.length > 0   %>
  <ul>
    <li>
-   <% @deliveries.each do |t|%>
+   <% @user.deliveries.each do |t|%>
       <a href="/deliveries/<%= t.id %>">
          <li> <%= t.location %> </li>
    </li>
@@ -11,7 +11,10 @@
       <% end %>
    </ul>
    <% else %>
-     <a href= "/deliveries/new"> No deliveries at this time  </a>
+     <h4> No Current Deliveries. Please Make a New Delivery, Click Link Below.  </h4>
    <% end %>
-  
+      <br/>
+      <br/>
+      
+   <a href= "/deliveries/new"> Make a new delivery  </a>
   
