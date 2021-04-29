@@ -96,7 +96,6 @@ class DeliveriesController < ApplicationController
     @delivery = Delivery.find_by_id(params[:id])
    if current_user.id == @delivery.user_id
       @delivery.destroy
-      params.delete("_method")
       redirect "/deliveries"
    else
       redirect "/users/#{@user.id}"
